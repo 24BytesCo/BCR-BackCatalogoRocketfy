@@ -10,16 +10,18 @@ const app = express();
 // Habilitamos CORS para permitir solicitudes desde diferentes dominios.
 app.use(cors());
 
+//Parseo del body
+app.use(express.json());
+
+
 // Conectamos a la base de datos utilizando la función personalizada bdConnection.
 bdConnection();
 
 // Configuramos una ruta básica que devuelve una respuesta JSON en la raíz de nuestro servidor.
-app.get("/", (req, res) => {
-  return res.json({
-    ok: true,
-    mensaje: "Todo Ok",
-  });
-});
+app.use("/api/usuarios", require("./routes/usuariosRoutes"));
+app.use("/api/catalogo", require("./routes/catalogosRoutes"));
+app.use("/api/categorias", require("./routes/categoriasRoutes"));
+app.use("/api/login", require("./routes/authRoutes"));
 
 // Iniciamos el servidor en el puerto especificado en las variables de entorno.
 app.listen(process.env.PORT, () => {
