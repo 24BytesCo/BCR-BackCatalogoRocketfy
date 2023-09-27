@@ -1,0 +1,18 @@
+{
+  "name": "bcr-backendcatalogorocketfy",
+  "version": "1.0.0",
+  "description": "Proyecto para el backend de la prueba técnica de rocketfy",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Alexis Dorado Muñoz",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.5.3"
+  }
+}
