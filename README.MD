@@ -9,7 +9,7 @@ Esta API de Node.js es una plataforma para administrar un catálogo de productos
 
 ## Características clave
 
- **Express:** La API utiliza el framework Express.js para crear un servidor web rápido y escalable.
+ * Express: La API utiliza el framework Express.js para crear un servidor web rápido y escalable.
 
 - **Variables de entorno:** Las configuraciones sensibles se manejan utilizando variables de entorno para mantener la seguridad.
 
