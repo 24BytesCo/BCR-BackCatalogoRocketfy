@@ -1,7 +1,5 @@
 # BCR - BackEnd Catalogo Rocketfy
 
-Claro, aquí tienes un ejemplo de un archivo `readme.md` para tu proyecto de Node.js que describe las tecnologías y características que has mencionado:
-
 ```markdown
 # Catálogo de Productos API
 
@@ -9,7 +7,7 @@ Esta API de Node.js es una plataforma para administrar un catálogo de productos
 
 ## Características clave
 
- * Express: La API utiliza el framework Express.js para crear un servidor web rápido y escalable.
+- **Express:** La API utiliza el framework Express.js para crear un servidor web rápido y escalable.
 
 - **Variables de entorno:** Las configuraciones sensibles se manejan utilizando variables de entorno para mantener la seguridad.
 
