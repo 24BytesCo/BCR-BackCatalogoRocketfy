@@ -13,12 +13,18 @@ const {
   crearProducto,
   modificarProducto,
   getProducto,
+  getHistoricoPreciosProducto
 } = require("../controllers/catalogosController");
+const { validarJWT } = require("../middlewares/validarJWT");
 
 // Creamos una instancia de Router para definir rutas específicas.
 const router = Router();
 
 router.get("/", getCatalogo);
+router.get("/producto/historico-precios/:id", 
+[
+  validarJWT
+], getHistoricoPreciosProducto);
 router.get("/:id", getProducto);
 router.post(
   "/",
