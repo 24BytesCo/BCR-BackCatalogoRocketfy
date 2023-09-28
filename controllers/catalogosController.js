@@ -69,7 +69,6 @@ const getHistoricoPreciosProducto = async (req, res = response) => {
   }
 };
 
-
 const getProducto = (req, res = response) => {
   try {
     res.json({
