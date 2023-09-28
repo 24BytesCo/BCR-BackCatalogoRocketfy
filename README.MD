@@ -46,7 +46,3 @@ Asegúrese de tener Node.js y npm (o yarn) instalados en su sistema. Luego, siga
 
 - Alexis Dorado Muñoz - alexis.dorado.munoz@gmail.com
 
-## Licencia
-
-Este proyecto está bajo la Licencia MIT. Consulte el archivo [LICENSE](LICENSE) para obtener más detalles.
-```
