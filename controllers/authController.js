@@ -10,9 +10,9 @@ const login = async (req, res = response) => {
     const usuarioBd = await Usuario.findOne({ correoElectronico });
 
     if (!usuarioBd) {
-      return res.status(404).json({
+      return res.status(400).json({
         ok: false,
-        mensaje: "Eror de loguin",
+        mensaje: "Credenciales inválidas",
       });
     }
 
@@ -24,15 +24,23 @@ const login = async (req, res = response) => {
     if (!validarContra) {
       return res.status(400).json({
         ok: false,
-        mensaje: "Error de loguin",
+        mensaje: "Error de login",
       });
     }
 
+    const usuario = new Usuario(
+      {
+        nombreCompleto: usuarioBd.nombreCompleto,
+        correoElectronico: usuarioBd.correoElectronico,
+        img: usuarioBd.img,
+        rol: usuarioBd.rol
+      });
     const token = await generarJWT(usuarioBd.id.toString());
     
     res.json({
       ok: true,
       token,
+      usuario
     });
   } catch (error) {
     console.log("Error al loguearse : ", error);
@@ -44,6 +52,28 @@ const login = async (req, res = response) => {
   }
 };
 
+const renovarJWT = async(req, res = response) => {
+
+  const uid = req.uid;
+
+  // Generar el TOKEN - JWT
+  const token = await generarJWT( uid );
+
+  // Obtener el usuario por UID
+  const usuario = await Usuario.findById( uid, "nombreCompleto img correoElectronico rol" );
+
+  delete usuario.contrasenia;
+
+  res.json({
+      ok: true,
+      token,
+      usuario
+  });
+
+}
+
+
 module.exports = {
   login,
+  renovarJWT
 };

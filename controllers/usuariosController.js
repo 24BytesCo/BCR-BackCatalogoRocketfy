@@ -123,7 +123,6 @@ const editarUsuario = async (req, res = response) => {
       }
     );
 
-    console.log("usuarioActualizado", usuarioActualizado);
 
     // Responder con una respuesta JSON que incluye el usuario actualizado
     res.json({

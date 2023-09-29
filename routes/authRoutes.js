@@ -4,7 +4,8 @@
 const { Router } = require("express");
 const { check } = require("express-validator");
 const { validarCampos } = require("../middlewares/validarCamposMiddleware");
-const { login } = require("../controllers/authController");
+const { login, renovarJWT } = require("../controllers/authController");
+const { validarJWT } = require("../middlewares/validarJWT");
  
 
 // Creamos una instancia de Router para definir rutas específicas.
@@ -19,6 +20,9 @@ router.post("/",
 
 ], login);
 
-
+router.get( '/renovar',
+    validarJWT,
+    renovarJWT
+)
 
 module.exports = router;

@@ -4,12 +4,12 @@ const Categoria = require("../models/categoriaModel");
 const getCategorias = async (req, res = response)=> {
 try {
 
-    const catalogo = await Categoria.find();  
+    const categorias = await Categoria.find({activo:true}, "nombre id ");  
 
 
     res.json({
         ok:true,
-        catalogo
+        categorias
     });
     
 } catch (error) {

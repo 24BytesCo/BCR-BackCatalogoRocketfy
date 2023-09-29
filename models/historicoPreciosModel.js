@@ -5,11 +5,15 @@ const { Schema, model } = require("mongoose");
 const historicoPreciosSchema = Schema({
   producto: {
     type: Schema.Types.ObjectId,
-    ref: "Catalogo",
+    ref: "Producto",
   },
   
-  precio: {
-    type: String,
+  precioAntiguo: {
+    type: Number,
+    required: true, // Campo obligatorio
+  },
+  precioNuevo: {
+    type: Number,
     required: true, // Campo obligatorio
   },
 

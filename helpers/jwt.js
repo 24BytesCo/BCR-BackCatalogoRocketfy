@@ -8,7 +8,6 @@ const generarJWT = (uid) => {
     const payload = {
       uid,
     };
-console.log("aqui", process.env.JWT_SECRET);
     // Firmar el token JWT utilizando el secret proporcionado en las variables de entorno
     jwt.sign(
       payload,

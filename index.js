@@ -19,7 +19,7 @@ bdConnection();
 
 // Configuramos una ruta básica que devuelve una respuesta JSON en la raíz de nuestro servidor.
 app.use("/api/usuarios", require("./routes/usuariosRoutes"));
-app.use("/api/catalogo", require("./routes/catalogosRoutes"));
+app.use("/api/productos", require("./routes/productosRoutes"));
 app.use("/api/categorias", require("./routes/categoriasRoutes"));
 app.use("/api/login", require("./routes/authRoutes"));
 
