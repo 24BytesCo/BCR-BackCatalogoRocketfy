@@ -4,7 +4,8 @@
   "description": "Proyecto para el backend de la prueba técnica de rocketfy",
   "main": "index.js",
   "scripts": {
-    "start:dev": "nodemon index.js"
+    "start:dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "Alexis Dorado Muñoz",
