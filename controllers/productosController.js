@@ -133,6 +133,14 @@ const getProducto = async (req, res = response) => {
       { path: "usuarioCrea", select: "nombreCompleto" },
     ]);
 
+    if (producto && producto.estado == false) {
+      return res.json({
+        ok: true,
+        producto: null,
+      });
+
+    }
+
     res.json({
       ok: true,
       producto,
@@ -194,7 +202,6 @@ const crearProducto = async (req, res = response) => {
       });
     }
 
-    console.log("req.body", req.body);
     const catalogo = Catalogo(req.body);
 
     await catalogo.save();
@@ -287,7 +294,7 @@ const getDocumentosColeccion = async (req, res = response) => {
   if (!busqueda || busqueda.trim() == "") {
     data = await Catalogo.find();
   } else {
-    data = await Catalogo.find({ nombre: regex });
+    data = await Catalogo.find({ nombre: regex, activo: true });
   }
 
   res.json({
@@ -299,9 +306,9 @@ const getDocumentosColeccion = async (req, res = response) => {
 const buscarPorRangoPrecio = async (req, res = response) => {
   try {
     const precioMaximo = Number(req.params.precioMaximo);
-    console.log(precioMaximo);
     const catalogo = await Catalogo.find({
       precio: { $gte: 0, $lte: precioMaximo },
+      activo: true
     }).exec();
 
     res.json({
@@ -320,10 +327,10 @@ const buscarPorRangoPrecio = async (req, res = response) => {
 const busquedaCaroBarato = async (req, res = response) => {
   try {
     // Encuentra el precio más alto (más caro)
-    const productoMasCarow = await Catalogo.findOne().sort("-precio").exec();
+    const productoMasCarow = await Catalogo.findOne({activo:true}).sort("-precio").exec();
 
     // Encuentra el precio más bajo (más barato)
-    const productoMasBaratow = await Catalogo.findOne().sort("precio").exec();
+    const productoMasBaratow = await Catalogo.findOne({activo: true}).sort("precio").exec();
 
     res.json({
       ok: true,
