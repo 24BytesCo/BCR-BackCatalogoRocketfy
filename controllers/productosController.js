@@ -133,10 +133,10 @@ const getProducto = async (req, res = response) => {
       { path: "usuarioCrea", select: "nombreCompleto" },
     ]);
 
-    if (producto && producto.estado == false) {
+    if (producto && producto.activo == false) {
       return res.json({
-        ok: true,
-        producto: null,
+        ok: false,
+        mensaje: "El producto esta inactivo o no existe",
       });
 
     }
